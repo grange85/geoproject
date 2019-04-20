@@ -51,7 +51,7 @@
             var thefox =  new google.maps.LatLng(51.504011,-0.343702);
             console.log (google.maps.geometry.spherical.computeDistanceBetween (thefox, current));
             
-            if (google.maps.geometry.spherical.computeDistanceBetween (thefox, current) < 25) {
+            if (google.maps.geometry.spherical.computeDistanceBetween (thefox, current) < 200) { 
               navigator.geolocation.clearWatch(id);
               playSound(id);
             }
