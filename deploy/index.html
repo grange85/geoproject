@@ -21,14 +21,8 @@
   </head>
   <body>
     <div id="map"></div>
+    <div id="pos"></div>
     <script>
-      var locations = JSON.parse('{"location":[{"name":"The Fox","lat":51.504011,"lon":-0.343702},{"name":"Home","lat":51.5035218,"lon":-0.3415596}]}');
-
-
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
       var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -36,6 +30,7 @@
           zoom: 15
         });
         infoWindow = new google.maps.InfoWindow;
+        infoWindow2 = new google.maps.InfoWindow;
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -49,17 +44,22 @@
 
             var current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var thefox =  new google.maps.LatLng(51.504011,-0.343702);
-            console.log (google.maps.geometry.spherical.computeDistanceBetween (thefox, current));
+            var thecanal = new google.maps.LatLng(51.5020798,-0.3394685);
+
+            console.log (google.maps.geometry.spherical.computeDistanceBetween (thecanal, current));
             
-            if (google.maps.geometry.spherical.computeDistanceBetween (thefox, current) < 200) { 
+            if (google.maps.geometry.spherical.computeDistanceBetween (thecanal, current) < 20) { 
               navigator.geolocation.clearWatch(id);
               playSound();
             }
 
-            infoWindow.setPosition(thefox);
-            infoWindow.setContent('The Fox.');
-
+            infoWindow.setPosition(thecanal);
+            infoWindow.setContent('The Canal.');
             infoWindow.open(map);
+
+            infoWindow2.setPosition(pos);
+            infoWindow2.setContent('You are here');
+            infoWindow2.open(map);
 
             map.setCenter(pos);
           }, function() {
