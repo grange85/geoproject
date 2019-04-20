@@ -53,7 +53,7 @@
             
             if (google.maps.geometry.spherical.computeDistanceBetween (thefox, current) < 200) { 
               navigator.geolocation.clearWatch(id);
-              playSound(id);
+              playSound();
             }
 
             infoWindow.setPosition(thefox);
