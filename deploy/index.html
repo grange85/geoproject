@@ -4,6 +4,7 @@
     <title>Geolocation</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -15,8 +16,8 @@
         top: 0;
       }
       #map {
-        height: 80vh;
-        width: 450px;
+        height: 50vh;
+        width: 560px;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -29,6 +30,7 @@
   <body>
     <div id="pos">here</div>
     <div id="map"></div>
+    <div id="vid"></div>
     <script>
       var map, infoWindow;
       function initMap() {
@@ -53,9 +55,11 @@
             var thefox =  new google.maps.LatLng(51.504011,-0.343702);
             var thecanal = new google.maps.LatLng(51.5020798,-0.3394685);
 
-            console.log (google.maps.geometry.spherical.computeDistanceBetween (thecanal, current));
+            var distance = google.maps.geometry.spherical.computeDistanceBetween (thecanal, current);
+            console.log (distance);
+            $("#pos").text(distance);
             
-            if (google.maps.geometry.spherical.computeDistanceBetween (thecanal, current) < 20) { 
+            if (google.maps.geometry.spherical.computeDistanceBetween (thecanal, current) < 100) { 
               navigator.geolocation.clearWatch(id);
               playSound();
             }
@@ -88,7 +92,8 @@
 
     function playSound() {
       var sound = new Audio("audio/07-the-sweet-fox-on-the-run.mp3");
-      sound.play();
+//      sound.play();
+      $("#vid").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/CjR3PnLAET8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
     }
 
     </script>
