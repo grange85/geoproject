@@ -3,11 +3,11 @@ branches:
   only:
     - master
 deploy:
-    region: eu-west-1
+    region: us-east-1
     provider: s3
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
     secret_access_key: $AWS_SECRET_KEY
-    bucket: static.grange85.co.uk
+    bucket: static.fullofwishes.co.uk
     skip_cleanup: true
     local-dir: deploy
     upload_dir: geoproject
