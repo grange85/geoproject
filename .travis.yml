@@ -2,6 +2,8 @@ language: minimal
 branches:
   only:
     - master
+before_deploy:
+    openssl aes-256-cbc -K $encrypted_30cd4b4f51ed_key -iv $encrypted_30cd4b4f51ed_iv -in s3cfg-prod.enc -out s3cfg-prod -d
 deploy:
     region: us-east-1
     provider: s3
