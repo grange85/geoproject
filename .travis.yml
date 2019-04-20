@@ -6,10 +6,11 @@ deploy:
     provider: s3
     access_key_id: $AWS_ACCESS_KEY # declared in Travis repo settings
     secret_access_key: $AWS_SECRET_KEY
-    bucket: static.fullofwishes.co.uk/geoproject
+    bucket: static.fullofwishes.co.uk
     region: eu-west-1
     skip_cleanup: true
     local-dir: deploy
+    upload_dir: geoproject
     acl: public_read
     detect_encoding: true
 notifications:
