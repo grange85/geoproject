@@ -1,0 +1,5 @@
+.sass-cache
+Gemfile.lock
+images/remove/
+_site
+s3cfg-prod

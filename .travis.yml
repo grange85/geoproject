@@ -16,3 +16,7 @@ deploy:
 notifications:
     email:
 on_failure: always
+before_deploy: 
+  - pip install --user awscli
+after_deploy:
+    aws cloudfront create-invalidation --distribution-id $CDN_DISTRIBUTION_ID --paths "/*"
