@@ -9,6 +9,17 @@ var map,
 var urlParams = new URLSearchParams(window.location.search);
 var debug = urlParams.has("debug");
 
+
+/* set up the sound and positions
+	locationFile	= the location of the audio file
+	locationName	= the name of the location
+	locationLat 	= the latitude of the location
+	locationLon		= the longitude of the location
+	distance 		= the radius of the area to monitor
+	volume 			= the initial volume
+	flag 			= the initial state of the flag
+	colour 			= the colour of the area on the map
+*/
 var arrSounds = [{
     "locationFile": "audio/pier1.mp3",
     "locationName": "The Pier",
@@ -105,17 +116,21 @@ function initMap() {
       for (i = 0; i < arrSounds.length; i++) {
         distance[i] = google.maps.geometry.spherical.computeDistanceBetween(objLocation[i], current);
 
-        console.log(debug);
-        if (arrSounds[i].flag == 0 && distance[i] < arrSounds[i].distance && !debug) {
-          objSound[i].play();
-          objSound[i].volume = (1 - distance[i] / arrSounds[i].distance);
-          arrSounds[i].flag = 1;
-          //                  console.log ((1 - distance[i]/arrSounds[i].distance));
+        if (distance[i] < arrSounds[i].distance) {
+        	if (objSound[i].paused) {
+	        	objSound[i].play();
+	      		arrSounds[i].flag = 1;
+	      	}
+        	objSound[i].volume = (1 - distance[i] / arrSounds[i].distance);
+        } else {
+        	objSound[i].pause();
+      		arrSounds[i].flag = 0;
         }
-      }
+	}
+
       $("#pos").html("");
       for (i = 0; i < arrSounds.length; i++) {
-        $("#pos").append("Distance = " + distance[i] + " | Volume = " + objSound[i].volume + " | flag = " + arrSounds[i].flag + "<br/>");
+        $("#pos").append("Distance = " + distance[i] + " | Volume = " + objSound[i].volume + " | " + !objSound[i].paused + "<br/>");
       }
 
       gMarker.setPosition(pos);
