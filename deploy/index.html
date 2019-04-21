@@ -5,15 +5,19 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
+    <script src="js/geoproject.js"></script> 
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #pos {
-        font-size: 2em;
+        font-size: 1.0em;
         color: green;
         background-color: black;
         left: 0;
         top: 0;
+        font-family: mono;
+        width: 552px;
+        padding: 2px 4px 2px 4px;
       }
       #map {
         height: 50vh;
@@ -28,103 +32,8 @@
     </style>
   </head>
   <body>
-    <div id="pos">here</div>
     <div id="map"></div>
-    <div id="vid"></div>
-    <script>
-      console.log("version 0.1");
-      var map, infoWindow;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 51.5035218, lng: -0.3415596},
-          zoom: 15
-        });
-        infoWindow = new google.maps.InfoWindow;
-        infoWindow2 = new google.maps.InfoWindow;
-        var currentflag = 0;
-        var location01flag = 0;
-        var mydistance = 400;
-
-//        var piersound = new Audio("audio/pier1.mp3");
-        var wavessound = new Audio("audio/07-the-sweet-fox-on-the-run.mp3");
-        var piervolume = 1;
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          id = navigator.geolocation.watchPosition(function(position) {
-
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-
-            var current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            var location02 =  new google.maps.LatLng(51.504011,-0.343702); // The Fox
-            var location01 = new google.maps.LatLng(51.5066869,-0.3375161); // Londis
-
-            var distance = google.maps.geometry.spherical.computeDistanceBetween (location01, current);
-//            console.log ("distance = " + distance);
-//            console.log ("currentflag = " + currentflag);
-
-            $("#pos").text(distance + " | " + piervolume);
-            
-            var distanceto01 = google.maps.geometry.spherical.computeDistanceBetween (location01, current);
-//            var distancetofox = google.maps.geometry.spherical.computeDistanceBetween (thefox, current);
-
-            piervolume = (mydistance - distanceto01)/mydistance;
-
-            if (distanceto01 < mydistance && location01flag == 0 ) { 
-              location01flag = 1;
-//              navigator.geolocation.clearWatch(id);
-              playSound(wavessound);
-            }
-
-            if (distanceto01 < mydistance) { 
-              adjustSound(wavessound, piervolume);
-          } else {
-            wavessound.pause();
-          }
-
-
-
-            infoWindow.setPosition(location01);
-            infoWindow.setContent('Location 01.');
-            infoWindow.open(map);
-
-            infoWindow2.setPosition(pos);
-            infoWindow2.setContent('You are here');
-            infoWindow2.open(map);
-
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-      }
-
-    function playSound(oSound) {
-      console.log ("Playing");
-      oSound.play();
-    }
-
-    function adjustSound(oSound, vol) {
-      console.log("adjust sound to " + vol);
-      oSound.volume = vol;
-    }
-
-    </script>
+    <div id="pos"></div>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAmSrTlJn4296FHK-CmyKN0fIPhUHEQiY&callback=initMap&libraries=geometry">
     </script>
