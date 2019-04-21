@@ -40,6 +40,12 @@
         });
         infoWindow = new google.maps.InfoWindow;
         infoWindow2 = new google.maps.InfoWindow;
+        var currentflag = 0;
+        var thefoxflag = 0;
+
+        var piersound = new Audio("audio/pier1.mp3");
+        var wavessound = new Audio("audio/waves1.mp3");
+        var piervolume = 1;
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -56,13 +62,33 @@
             var thecanal = new google.maps.LatLng(51.5020798,-0.3394685);
 
             var distance = google.maps.geometry.spherical.computeDistanceBetween (thecanal, current);
-            console.log (distance);
+//            console.log ("distance = " + distance);
+//            console.log ("currentflag = " + currentflag);
+
             $("#pos").text(distance);
             
-            if (google.maps.geometry.spherical.computeDistanceBetween (thecanal, current) < 100) { 
-              navigator.geolocation.clearWatch(id);
-              playSound();
+            var distancetocanal = google.maps.geometry.spherical.computeDistanceBetween (thecanal, current);
+            var distancetofox = google.maps.geometry.spherical.computeDistanceBetween (thefox, current);
+
+            piervolume = (300 - distancetocanal)/300;
+
+
+            if (distancetocanal < 300 && currentflag == 0 ) { 
+              currentflag = 1;
+//              navigator.geolocation.clearWatch(id);
+              playSound(piersound);
             }
+
+
+            if (distancetofox < 300 && thefoxflag == 0 ) { 
+              thefoxflag = 1;
+//              navigator.geolocation.clearWatch(id);
+              playSound(wavessound);
+            }
+
+            adjustSound(wavessound, piervolume);
+
+
 
             infoWindow.setPosition(thecanal);
             infoWindow.setContent('The Canal.');
@@ -90,10 +116,14 @@
         infoWindow.open(map);
       }
 
-    function playSound() {
-      var sound = new Audio("audio/07-the-sweet-fox-on-the-run.mp3");
-//      sound.play();
-      $("#vid").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/CjR3PnLAET8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+    function playSound(oSound) {
+      console.log ("Playing");
+      oSound.play();
+    }
+
+    function adjustSound(oSound, vol) {
+      console.log("adjust sound to " + vol);
+      oSound.volume = vol;
     }
 
     </script>
