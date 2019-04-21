@@ -32,6 +32,7 @@
     <div id="map"></div>
     <div id="vid"></div>
     <script>
+      console.log("version 0.1");
       var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -41,10 +42,11 @@
         infoWindow = new google.maps.InfoWindow;
         infoWindow2 = new google.maps.InfoWindow;
         var currentflag = 0;
-        var thefoxflag = 0;
+        var location01flag = 0;
+        var mydistance = 400;
 
-        var piersound = new Audio("audio/pier1.mp3");
-        var wavessound = new Audio("audio/waves1.mp3");
+//        var piersound = new Audio("audio/pier1.mp3");
+        var wavessound = new Audio("audio/07-the-sweet-fox-on-the-run.mp3");
         var piervolume = 1;
 
         // Try HTML5 geolocation.
@@ -58,40 +60,36 @@
 
 
             var current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            var thefox =  new google.maps.LatLng(51.504011,-0.343702);
-            var thecanal = new google.maps.LatLng(51.5020798,-0.3394685);
+            var location02 =  new google.maps.LatLng(51.504011,-0.343702); // The Fox
+            var location01 = new google.maps.LatLng(51.5066869,-0.3375161); // Londis
 
-            var distance = google.maps.geometry.spherical.computeDistanceBetween (thecanal, current);
+            var distance = google.maps.geometry.spherical.computeDistanceBetween (location01, current);
 //            console.log ("distance = " + distance);
 //            console.log ("currentflag = " + currentflag);
 
-            $("#pos").text(distance);
+            $("#pos").text(distance + " | " + piervolume);
             
-            var distancetocanal = google.maps.geometry.spherical.computeDistanceBetween (thecanal, current);
-            var distancetofox = google.maps.geometry.spherical.computeDistanceBetween (thefox, current);
+            var distanceto01 = google.maps.geometry.spherical.computeDistanceBetween (location01, current);
+//            var distancetofox = google.maps.geometry.spherical.computeDistanceBetween (thefox, current);
 
-            piervolume = (300 - distancetocanal)/300;
+            piervolume = (mydistance - distanceto01)/mydistance;
 
-
-            if (distancetocanal < 300 && currentflag == 0 ) { 
-              currentflag = 1;
-//              navigator.geolocation.clearWatch(id);
-              playSound(piersound);
-            }
-
-
-            if (distancetofox < 300 && thefoxflag == 0 ) { 
-              thefoxflag = 1;
+            if (distanceto01 < mydistance && location01flag == 0 ) { 
+              location01flag = 1;
 //              navigator.geolocation.clearWatch(id);
               playSound(wavessound);
             }
 
-            adjustSound(wavessound, piervolume);
+            if (distanceto01 < mydistance) { 
+              adjustSound(wavessound, piervolume);
+          } else {
+            wavessound.pause();
+          }
 
 
 
-            infoWindow.setPosition(thecanal);
-            infoWindow.setContent('The Canal.');
+            infoWindow.setPosition(location01);
+            infoWindow.setContent('Location 01.');
             infoWindow.open(map);
 
             infoWindow2.setPosition(pos);
