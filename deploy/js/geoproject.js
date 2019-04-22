@@ -111,8 +111,22 @@ function initMap() {
 
 // This is the main 
   if (navigator.geolocation) {
+
   	// initialise a Geolocation object and watch the current position
 	id = navigator.geolocation.watchPosition(function(position) {
+
+
+	$(function() {
+		$("#stop").click( function() {
+			for (i = 0; i < arrSounds.length; i++) {
+				objSound[i].pause();
+			}
+			navigator.geolocation.clearWatch(id);
+		})
+	});
+
+
+
 
 	  // Load current position into an object		
 	  var pos = {
@@ -166,3 +180,4 @@ function handleLocationError(browserHasGeolocation, gMarker, pos) {
 	'Error: Your browser doesn\'t support geolocation.');
   gMarker.open(map);
 }
+
