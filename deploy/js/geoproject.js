@@ -56,7 +56,7 @@ var arrSounds = [{
 	"locationName": "The Pier",
 	"locationLat": 51.503992, 
 	"locationLon": -0.336920,
-	"distance": 30,
+	"distance": 29,
 	"volume": 1,
 	"flag": 0,
 	"color": "#ffff00"
