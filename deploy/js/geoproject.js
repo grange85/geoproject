@@ -23,7 +23,7 @@ var debug = urlParams.has("debug"); 							// boolean for debugging
 */
 var arrSounds = [{
 	"locationFile": "audio/pier1.mp3",
-	"locationName": "The Pier",
+	"locationName": "Pier",
 	"locationLat": 51.502465, 
 	"locationLon": -0.338309,
 	"distance": 200,
@@ -33,7 +33,7 @@ var arrSounds = [{
   },
   {
 	"locationFile": "audio/waves1.mp3",
-	"locationName": "The Beach",
+	"locationName": "Beach",
 	"locationLat": 51.504720, 
 	"locationLon": -0.335074,
 	"distance": 200,
@@ -43,7 +43,7 @@ var arrSounds = [{
   },
   {
 	"locationFile": "audio/football1.mp3",
-	"locationName": "The Pier",
+	"locationName": "Football",
 	"locationLat": 51.505201, 
 	"locationLon": -0.338840,
 	"distance": 200,
@@ -53,7 +53,7 @@ var arrSounds = [{
   },
   {
 	"locationFile": "audio/mellotron1.mp3",
-	"locationName": "The Pier",
+	"locationName": "Mellotron",
 	"locationLat": 51.503992, 
 	"locationLon": -0.336920,
 	"distance": 29,
