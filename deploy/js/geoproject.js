@@ -142,7 +142,7 @@ function initMap() {
 	  // JQuery selector and load up some info
 	  $("#pos").html("");
 	  for (i = 0; i < arrSounds.length; i++) {
-		$("#pos").append("Distance = " + distance[i] + " | Volume = " + objSound[i].volume + " | " + !objSound[i].paused + "<br/>");
+		$("#pos").append("<h4>Target :" + arrSounds[i].locationName + "</h4><ul><li>Distance = " + distance[i] + "</li><li>Volume = " + objSound[i].volume + "</li><li>Playing = " + !objSound[i].paused + "</li></ul>");
 	  }
 
 	  gMarker.setPosition(pos);			// locate the marker in current position
