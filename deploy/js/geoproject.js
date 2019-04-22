@@ -1,10 +1,11 @@
-console.log("version 0.2");
-var map 				// the Google maps object
-var gMarker				// marker showing current location
-var objSound = []		// array to hold HTML5 sound objects
-var objLocation = []	// array to hold Google Maps LatLng objects of targets
-var distance = []		// array to hold distance between current location and target
-var objCircle = []		// array to hold Google Maps Circle objects of target locations
+var version = "v0.3";	
+var map; 				// the Google maps object
+var gMarker;				// marker showing current location
+var objSound = [];		// array to hold HTML5 sound objects
+var objLocation = [];	// array to hold Google Maps LatLng objects of targets
+var distance = [];		// array to hold distance between current location and target
+var objCircle = [];		// array to hold Google Maps Circle objects of target locations
+console.log("version "+ version);
 
 var urlParams = new URLSearchParams(window.location.search);	// get the query string from the URL
 var debug = urlParams.has("debug"); 							// boolean for debugging
