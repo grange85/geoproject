@@ -66,7 +66,7 @@ var arrSounds = [{
 	"locationName": "Sussex Campus N01se",
 	"locationLat": 50.866786, 
 	"locationLon": -0.087511,
-	"distance": 140,
+	"distance": 300,
 	"volume": 0,
 	"flag": 0,
 	"color": "#00ffff"
