@@ -63,10 +63,10 @@ var arrSounds = [{
   },
   {
 	"locationFile": "audio/sound5.mp3",
-	"locationName": "The Pier",
-	"locationLat": 51.501011,
-	"locationLon": -0.341702,
-	"distance": 100,
+	"locationName": "Sussex Campus N01se",
+	"locationLat": 50.866786, 
+	"locationLon": -0.087511,
+	"distance": 140,
 	"volume": 0,
 	"flag": 0,
 	"color": "#00ffff"
@@ -75,9 +75,7 @@ var arrSounds = [{
 
 
 
-// This is the callback function that runs the app - it's called in the Google Maps call in index.html
 function initMap() {
-  // initialise the Google Map
   map = new google.maps.Map(document.getElementById('map'), {
 	center: {
 	  lat: 51.5035218,
@@ -87,14 +85,13 @@ function initMap() {
   });
 
 
-// This loops through the array of sounds and loads the sound, location and Circle objects into arrays
   for (i = 0; i < arrSounds.length; i++) {
-	objSound[i] = new Audio(arrSounds[i].locationFile);		// Initialise Audio player object with the sound
-	objSound[i].pause();									// Pause the player
-	objSound[i].loop = true;								// Set the audio to loop
-	objSound[i].volume = arrSounds[i].volume;				// Set the initial volumne
-	objLocation[i] = new google.maps.LatLng(arrSounds[i].locationLat, arrSounds[i].locationLon);	// Initialise Google Maps LatLng object with target location
-	objCircle[i] = new google.maps.Circle({					// Draw a circle on the map around the target location
+	objSound[i] = new Audio(arrSounds[i].locationFile);	//audio player object
+	objSound[i].pause();								// pauses					
+	objSound[i].loop = true;							// set the audio to loop						
+	objSound[i].volume = arrSounds[i].volume;			// set the starting volume 			
+	objLocation[i] = new google.maps.LatLng(arrSounds[i].locationLat, arrSounds[i].locationLon);// start google maps LatLng objectwith the target location
+	objCircle[i] = new google.maps.Circle({				// draw a circle around the trigger location		
 	  strokeColor: arrSounds[i].colour,
 	  strokeOpacity: 0.8,
 	  strokeWeight: 2,
@@ -106,13 +103,13 @@ function initMap() {
 	});
   }
 
-  gMarker = new google.maps.Marker; 	// Initialise a marker 
+  gMarker = new google.maps.Marker; 	// marker
 
 
-// This is the main 
+//main loop
   if (navigator.geolocation) {
 
-  	// initialise a Geolocation object and watch the current position
+ //geolcation object and watchPosition
 	id = navigator.geolocation.watchPosition(function(position) {
 
 
@@ -128,15 +125,15 @@ function initMap() {
 
 
 
-	  // Load current position into an object		
+	 // load current position to object
 	  var pos = {
 		lat: position.coords.latitude,
 		lng: position.coords.longitude
 	  };
 
-	  var current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // Initialise Google Maps LatLng object with current position
+	  var current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); //google maps LatLng object with current position
 
-	  // Loop through the sounds
+	
 	  for (i = 0; i < arrSounds.length; i++) {
 		distance[i] = google.maps.geometry.spherical.computeDistanceBetween(objLocation[i], current); // store distance between current and target
 
@@ -144,11 +141,11 @@ function initMap() {
 		if (distance[i] < arrSounds[i].distance) {
 			// if the sound is paused 
 			if (objSound[i].paused) {
-				objSound[i].play();		// start playing the sound
+				objSound[i].play();		// start playing sound
 		  	}
-			objSound[i].volume = (1 - distance[i] / arrSounds[i].distance);	// set the volume based on the distance to the target
+			objSound[i].volume = (1 - distance[i] / arrSounds[i].distance);	// set the volume based on the distance to the trigger
 		} else {
-			// if we're not close enough to the object
+			// if not close enough to the object
 			objSound[i].pause();		// pause the sound
 		}
 	}
