@@ -62,7 +62,7 @@ var arrSounds = [{
 	"color": "#ffff00"
   },
   {
-	"locationFile": "audio/sound5.mp3",
+	"locationFile": "audio/ambience1.wav",
 	"locationName": "Sussex Campus N01se",
 	"locationLat": 50.866786, 
 	"locationLon": -0.087511,
