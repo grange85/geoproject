@@ -9,6 +9,7 @@
     <script src="js/geoproject.js?v=2"></script> 
     <link rel="stylesheet" href="css/styles.css?v=2"></link>
   </head>
+<<<<<<< HEAD
 
 
   <body>
@@ -17,6 +18,108 @@
       <div id="controls"><button id="stop">Stop</button></div>
       <div id="pos"></div>
     </div>
+=======
+  <body>
+    <div id="pos">here</div>
+    <div id="map"></div>
+    <div id="vid"></div>
+    <script>
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 51.5035218, lng: -0.3415596},
+          zoom: 15
+        });
+        infoWindow = new google.maps.InfoWindow;
+        infoWindow2 = new google.maps.InfoWindow;
+        var currentflag = 0;
+        var thefoxflag = 0;
+
+        var piersound = new Audio("audio/pier1.mp3");
+        var wavessound = new Audio("audio/waves1.mp3");
+        var piervolume = 1;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          id = navigator.geolocation.watchPosition(function(position) {
+
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+
+            var current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            var thefox =  new google.maps.LatLng(51.504011,-0.343702);
+            var thecanal = new google.maps.LatLng(51.5020798,-0.3394685);
+
+            var distance = google.maps.geometry.spherical.computeDistanceBetween (thecanal, current);
+//            console.log ("distance = " + distance);
+//            console.log ("currentflag = " + currentflag);
+
+            $("#pos").text(distance);
+            
+            var distancetocanal = google.maps.geometry.spherical.computeDistanceBetween (thecanal, current);
+            var distancetofox = google.maps.geometry.spherical.computeDistanceBetween (thefox, current);
+
+            piervolume = (300 - distancetocanal)/300;
+
+
+            if (distancetocanal < 300 && currentflag == 0 ) { 
+              currentflag = 1;
+//              navigator.geolocation.clearWatch(id);
+              playSound(piersound);
+            }
+
+
+            if (distancetofox < 300 && thefoxflag == 0 ) { 
+              thefoxflag = 1;
+//              navigator.geolocation.clearWatch(id);
+              playSound(wavessound);
+            }
+
+            adjustSound(wavessound, piervolume);
+
+
+
+            infoWindow.setPosition(thecanal);
+            infoWindow.setContent('The Canal.');
+            infoWindow.open(map);
+
+            infoWindow2.setPosition(pos);
+            infoWindow2.setContent('You are here');
+            infoWindow2.open(map);
+
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+
+    function playSound(oSound) {
+      console.log ("Playing");
+      oSound.play();
+    }
+
+    function adjustSound(oSound, vol) {
+      console.log("adjust sound to " + vol);
+      oSound.volume = vol;
+    }
+
+    </script>
+>>>>>>> parent of a9d3aa4... fix sounds
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAmSrTlJn4296FHK-CmyKN0fIPhUHEQiY&callback=initMap&libraries=geometry">
     </script>
