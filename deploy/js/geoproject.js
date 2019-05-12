@@ -1,10 +1,14 @@
-\var version = "v0.3";	
+var version = "v0.3";	
 var map; 				// the Google maps object
 var gMarker;				// marker showing current location
 var objSound = [];		// array to hold HTML5 sound objects
 var objLocation = [];	// array to hold Google Maps LatLng objects of targets
 var distance = [];		// array to hold distance between current location and target
 var objCircle = [];		// array to hold Google Maps Circle objects of target locations
+var difference;
+var lasttime;
+var increment;
+
 console.log("version "+ version);
 
 var urlParams = new URLSearchParams(window.location.search);	// get the query string from the URL
@@ -135,6 +139,7 @@ function initMap() {
 
 	
 	  for (i = 0; i < arrSounds.length; i++) {
+	  	console.log("lasttime =" + lasttime);
 		distance[i] = google.maps.geometry.spherical.computeDistanceBetween(objLocation[i], current); // store distance between current and target
 
 		// if you car closer than the desired distance
@@ -143,21 +148,40 @@ function initMap() {
 			if (objSound[i].paused) {
 				objSound[i].play();		// start playing sound
 		  	}
-		  	var difference = (1 - distance[i] / arrSounds[i].distance)
+		  	difference = (1 - distance[i] / arrSounds[i].distance).toPrecision(2);
 
-			objSound[i].volume = (difference);	// set the volume based on the distance to the trigger
-	
+		  	if ( lasttime == null){
+				objSound[i].volume = ((1 - distance[i] / arrSounds[i].distance));	// set the volume based on the distance to the trigger
+			} else {
+
+				if (lasttime - difference < 0) {
+					for (var j = lasttime; j < difference; j = j + 0.05){
+							console.log("volume = " + j);
+						objSound[i].volume = (j);	// set the volume based on the distance to the trigger
+
+					}
+				}else {
+					for (var j = lasttime; j > difference; j = j - 0.05){
+							console.log("volume = " + j);
+						objSound[i].volume = (j);	// set the volume based on the distance to the trigger
+
+						}
+				}
+			objSound[i].volume = ((1 - distance[i] / arrSounds[i].distance));	// set the volume based on the distance to the trigger
+			}
 
 		} else {
 			// if not close enough to the object
 			objSound[i].pause();		// pause the sound
 		}
+		lasttime = 0.1;
+
 	}
 
 	  // JQuery selector and load up some info
 	  $("#pos").html("");
 	  for (i = 0; i < arrSounds.length; i++) {
-		$("#pos").append("<h4>Target :" + arrSounds[i].locationName + "</h4><ul><li>Distance = " + distance[i] + "</li><li>Volume = " + objSound[i].volume + "</li><li>Playing = " + !objSound[i].paused + "</li></ul>");
+		$("#pos").append("<h4>Target :" + arrSounds[i].locationName + "</h4><ul><li>Distance = " + distance[i] + "</li><li>Volume = " + objSound[i].volume + "</li><li>Playing = " + !objSound[i].paused + "</li><li>difference=" + difference + "</ul>");
 	  }
 
 	  gMarker.setPosition(pos);			// locate the marker in current position
