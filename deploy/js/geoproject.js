@@ -50,27 +50,27 @@ var arrSounds = [{
 	"volume": 0,
 	"flag": 0,
 	"colour": "#0000ff"
-  },
-  {
-	"locationFile": "audio/.mp3",
-	"locationName": "Mellotron",
-	"locationLat": 51.503992, 
-	"locationLon": -0.336920,
-	"distance": 29,
-	"volume": 1,
-	"flag": 0,
-	"color": "#ffff00"
-  },
-  {
-	"locationFile": "audio/.mp3",
-	"locationName": "Sussex Campus N01se",
-	"locationLat": 50.866786, 
-	"locationLon": -0.087511,
-	"distance": 50,
-	"volume": 0,
-	"flag": 0,
-	"color": "#00ffff"
-  }
+//   },
+//   {
+// //	"locationFile": "audio/.mp3",
+// //	"locationName": "Mellotron",
+// //	"locationLat": 51.503992, 
+// //	"locationLon": -0.336920,
+// //	"distance": 29,
+// //	"volume": 1,
+// //	"flag": 0,
+// //	"color": "#ffff00"
+//   },
+//   {
+// //	"locationFile": "audio/.mp3",
+// //	"locationName": "Sussex Campus N01se",
+// //	"locationLat": 50.866786, 
+// //	"locationLon": -0.087511,
+// //	"distance": 50,
+// //	"volume": 0,
+// //	"flag": 0,
+// //		"color": "#00ffff"
+   }
 ];
 
 
