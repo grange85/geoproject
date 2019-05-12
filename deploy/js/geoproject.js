@@ -1,4 +1,4 @@
-var version = "v0.3";	
+\var version = "v0.3";	
 var map; 				// the Google maps object
 var gMarker;				// marker showing current location
 var objSound = [];		// array to hold HTML5 sound objects
@@ -143,7 +143,11 @@ function initMap() {
 			if (objSound[i].paused) {
 				objSound[i].play();		// start playing sound
 		  	}
-			objSound[i].volume = (1 - distance[i] / arrSounds[i].distance);	// set the volume based on the distance to the trigger
+		  	var difference = (1 - distance[i] / arrSounds[i].distance)
+
+			objSound[i].volume = (difference);	// set the volume based on the distance to the trigger
+	
+
 		} else {
 			// if not close enough to the object
 			objSound[i].pause();		// pause the sound
