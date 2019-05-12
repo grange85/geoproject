@@ -22,8 +22,8 @@ var debug = urlParams.has("debug"); 							// boolean for debugging
 	colour 			= the colour of the area on the map
 */
 var arrSounds = [{
-	"locationFile": "audio/pier1.mp3",
-	"locationName": "Pier",
+	"locationFile": "audio/pier3.mp3",
+	"locationName": "Palace Pier",
 	"locationLat": 51.502465, 
 	"locationLon": -0.338309,
 	"distance": 200,
@@ -32,7 +32,7 @@ var arrSounds = [{
 	"colour": "#ff0000"
   },
   {
-	"locationFile": "audio/waves1.mp3",
+	"locationFile": "audio/waves3.mp3",
 	"locationName": "Beach",
 	"locationLat": 51.504720, 
 	"locationLon": -0.335074,
@@ -42,8 +42,8 @@ var arrSounds = [{
 	"colour": "#00ff00"
   },
   {
-	"locationFile": "audio/football1.mp3",
-	"locationName": "Football",
+	"locationFile": "audio/park3.mp3",
+	"locationName": "Old Steine",
 	"locationLat": 51.505201, 
 	"locationLon": -0.338840,
 	"distance": 200,
@@ -52,7 +52,7 @@ var arrSounds = [{
 	"colour": "#0000ff"
   },
   {
-	"locationFile": "audio/mellotron1.mp3",
+	"locationFile": "audio/.mp3",
 	"locationName": "Mellotron",
 	"locationLat": 51.503992, 
 	"locationLon": -0.336920,
@@ -62,11 +62,11 @@ var arrSounds = [{
 	"color": "#ffff00"
   },
   {
-	"locationFile": "audio/ambience1.wav",
+	"locationFile": "audio/.mp3",
 	"locationName": "Sussex Campus N01se",
 	"locationLat": 50.866786, 
 	"locationLon": -0.087511,
-	"distance": 300,
+	"distance": 50,
 	"volume": 0,
 	"flag": 0,
 	"color": "#00ffff"
