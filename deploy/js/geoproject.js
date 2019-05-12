@@ -9,7 +9,7 @@ var difference;
 var lasttime;
 var increment;
 
-console.log("version "+ version);
+//console.log("version "+ version);
 
 var urlParams = new URLSearchParams(window.location.search);	// get the query string from the URL
 var debug = urlParams.has("debug"); 							// boolean for debugging
@@ -139,7 +139,7 @@ function initMap() {
 
 	
 	  for (i = 0; i < arrSounds.length; i++) {
-	  	console.log("lasttime =" + lasttime);
+//	  	console.log("lasttime =" + lasttime);
 		distance[i] = google.maps.geometry.spherical.computeDistanceBetween(objLocation[i], current); // store distance between current and target
 
 		// if you car closer than the desired distance
@@ -151,19 +151,20 @@ function initMap() {
 		  	difference = (1 - distance[i] / arrSounds[i].distance).toPrecision(2);
 
 		  	if ( lasttime == null){
-				objSound[i].volume = ((1 - distance[i] / arrSounds[i].distance));	// set the volume based on the distance to the trigger
+				objSound[i].volume = (difference);	// set the volume based on the distance to the trigger
 			} else {
 
 				if (lasttime - difference < 0) {
-					for (var j = lasttime; j < difference; j = j + 0.05){
+					for (var j = parseFloat(lasttime); j < parseFloat(difference); j = j + 0.05){
+//						console.log("j-" + j);
 						objSound[i].volume = (j);	// set the volume based on the distance to the trigger
 					}
 				}else {
-					for (var j = lasttime; j > difference; j = j - 0.05){
+					for (var j = parseFloat(lasttime); j > parseFloat(difference); j = j - 0.05){
 						objSound[i].volume = (j);	// set the volume based on the distance to the trigger						
 					}
 				}
-			objSound[i].volume = ((1 - distance[i] / arrSounds[i].distance));	// set the volume based on the distance to the trigger
+			objSound[i].volume = (difference);	// set the volume based on the distance to the trigger
 			}
 
 		} else {
