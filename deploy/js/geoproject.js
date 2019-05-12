@@ -156,16 +156,12 @@ function initMap() {
 
 				if (lasttime - difference < 0) {
 					for (var j = lasttime; j < difference; j = j + 0.05){
-							console.log("volume = " + j);
 						objSound[i].volume = (j);	// set the volume based on the distance to the trigger
-
 					}
 				}else {
 					for (var j = lasttime; j > difference; j = j - 0.05){
-							console.log("volume = " + j);
-						objSound[i].volume = (j);	// set the volume based on the distance to the trigger
-
-						}
+						objSound[i].volume = (j);	// set the volume based on the distance to the trigger						
+					}
 				}
 			objSound[i].volume = ((1 - distance[i] / arrSounds[i].distance));	// set the volume based on the distance to the trigger
 			}
@@ -174,14 +170,14 @@ function initMap() {
 			// if not close enough to the object
 			objSound[i].pause();		// pause the sound
 		}
-		lasttime = 0.1;
+		lasttime = difference;
 
 	}
 
 	  // JQuery selector and load up some info
 	  $("#pos").html("");
 	  for (i = 0; i < arrSounds.length; i++) {
-		$("#pos").append("<h4>Target :" + arrSounds[i].locationName + "</h4><ul><li>Distance = " + distance[i] + "</li><li>Volume = " + objSound[i].volume + "</li><li>Playing = " + !objSound[i].paused + "</li><li>difference=" + difference + "</ul>");
+		$("#pos").append("<h4>Target :" + arrSounds[i].locationName + "</h4><ul><li>Distance = " + distance[i] + "</li><li>Volume = " + objSound[i].volume + "</li><li>Playing = " + !objSound[i].paused + "</li></ul>");
 	  }
 
 	  gMarker.setPosition(pos);			// locate the marker in current position
