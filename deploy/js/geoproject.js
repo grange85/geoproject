@@ -28,8 +28,8 @@ var debug = urlParams.has("debug"); 							// boolean for debugging
 var arrSounds = [{
 	"locationFile": "audio/pier3.mp3",
 	"locationName": "Palace Pier",
-	"locationLat": 51.502465, 
-	"locationLon": -0.338309,
+	"locationLat": 50.819312, 
+	"locationLon": -0.136425,
 	"distance": 200,
 	"volume": 0,
 	"flag": 0,
@@ -37,9 +37,9 @@ var arrSounds = [{
   },
   {
 	"locationFile": "audio/waves3.mp3",
-	"locationName": "Beach",
-	"locationLat": 51.504720, 
-	"locationLon": -0.335074,
+	"locationName": "Beach West",
+	"locationLat": 50.819367, 
+	"locationLon": -0.135390,
 	"distance": 200,
 	"volume": 0,
 	"flag": 0,
@@ -48,22 +48,22 @@ var arrSounds = [{
   {
 	"locationFile": "audio/park3.mp3",
 	"locationName": "Old Steine",
-	"locationLat": 51.505201, 
-	"locationLon": -0.338840,
+	"locationLat": 50.820773, 
+	"locationLon": -0.137278,
 	"distance": 200,
 	"volume": 0,
 	"flag": 0,
 	"colour": "#0000ff"
-//   },
-//   {
-// //	"locationFile": "audio/.mp3",
-// //	"locationName": "Mellotron",
-// //	"locationLat": 51.503992, 
-// //	"locationLon": -0.336920,
-// //	"distance": 29,
-// //	"volume": 1,
-// //	"flag": 0,
-// //	"color": "#ffff00"
+  },
+  {
+	"locationFile": "audio/waves3.mp3",
+	"locationName": "Beach East",
+	"locationLat": 50.819438, 
+	"locationLon": -0.138061,
+	"distance": 200,
+	"volume": 1,
+	"flag": 0,
+	"color": "#ffff00"
 //   },
 //   {
 // //	"locationFile": "audio/.mp3",
