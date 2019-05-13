@@ -30,7 +30,7 @@ var arrSounds = [{
 	"locationName": "Palace Pier",
 	"locationLat": 50.819312, 
 	"locationLon": -0.136425,
-	"distance": 200,
+	"distance": 100,
 	"volume": 0,
 	"flag": 0,
 	"colour": "#ff0000"
@@ -40,7 +40,7 @@ var arrSounds = [{
 	"locationName": "Beach West",
 	"locationLat": 50.819367, 
 	"locationLon": -0.135390,
-	"distance": 200,
+	"distance": 100,
 	"volume": 0,
 	"flag": 0,
 	"colour": "#00ff00"
@@ -50,7 +50,7 @@ var arrSounds = [{
 	"locationName": "Old Steine",
 	"locationLat": 50.820773, 
 	"locationLon": -0.137278,
-	"distance": 200,
+	"distance": 100,
 	"volume": 0,
 	"flag": 0,
 	"colour": "#0000ff"
@@ -60,7 +60,7 @@ var arrSounds = [{
 	"locationName": "Beach East",
 	"locationLat": 50.819438, 
 	"locationLon": -0.138061,
-	"distance": 200,
+	"distance": 100,
 	"volume": 1,
 	"flag": 0,
 	"color": "#ffff00"
