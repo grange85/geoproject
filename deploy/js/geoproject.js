@@ -26,7 +26,7 @@ var debug = urlParams.has("debug"); 							// boolean for debugging
 	colour 			= the colour of the area on the map
 */
 var arrSounds = [{
-	"locationFile": "audio/pier3.mp3",
+	"locationFile": "audio/pier14.mp3",
 	"locationName": "Palace Pier",
 	"locationLat": 51.503709, 
 	"locationLon": -0.340423,
