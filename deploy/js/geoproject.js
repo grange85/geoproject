@@ -28,9 +28,9 @@ var debug = urlParams.has("debug"); 							// boolean for debugging
 var arrSounds = [{
 	"locationFile": "audio/pier3.mp3",
 	"locationName": "Palace Pier",
-	"locationLat": 50.819312, 
-	"locationLon": -0.136425,
-	"distance": 100,
+	"locationLat": 51.503709, 
+	"locationLon": -0.340423,
+	"distance": 200,
 	"volume": 0,
 	"flag": 0,
 	"colour": "#ff0000"
@@ -38,9 +38,9 @@ var arrSounds = [{
   {
 	"locationFile": "audio/waves3.mp3",
 	"locationName": "Beach West",
-	"locationLat": 50.819367, 
-	"locationLon": -0.135390,
-	"distance": 100,
+	"locationLat": 51.502438, 
+	"locationLon": -0.338395,
+	"distance": 200,
 	"volume": 0,
 	"flag": 0,
 	"colour": "#00ff00"
@@ -48,9 +48,9 @@ var arrSounds = [{
   {
 	"locationFile": "audio/park3.mp3",
 	"locationName": "Old Steine",
-	"locationLat": 50.820773, 
-	"locationLon": -0.137278,
-	"distance": 100,
+	"locationLat": 51.505363, 
+	"locationLon": -0.338122,
+	"distance": 225,
 	"volume": 0,
 	"flag": 0,
 	"colour": "#0000ff"
@@ -58,9 +58,9 @@ var arrSounds = [{
   {
 	"locationFile": "audio/waves3.mp3",
 	"locationName": "Beach East",
-	"locationLat": 50.819438, 
-	"locationLon": -0.138061,
-	"distance": 100,
+	"locationLat": 51.504677, 
+	"locationLon": -0.342955,
+	"distance": 200,
 	"volume": 1,
 	"flag": 0,
 	"color": "#ffff00"
